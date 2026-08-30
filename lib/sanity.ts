@@ -45,6 +45,42 @@ export async function getFoundation(slug: string): Promise<any> {
   )
 }
 
+export async function getComponent(slug: string): Promise<any> {
+  return sanityFetch(
+    `*[_type == "component" && slug.current == $slug && ${NO_DRAFTS}][0]{
+      name, "slug": slug.current, category, status, description, figmaUrl, dos, donts
+    }`,
+    { slug }
+  )
+}
+
+export async function getPattern(slug: string): Promise<any> {
+  return sanityFetch(
+    `*[_type == "pattern" && slug.current == $slug && ${NO_DRAFTS}][0]{
+      title, "slug": slug.current, description, dos, donts
+    }`,
+    { slug }
+  )
+}
+
+export async function getChangelog(): Promise<any> {
+  return sanityFetch(
+    `*[_type == "changelogEntry" && ${NO_DRAFTS}] | order(date desc){
+      version, releaseType, date, changes
+    }`
+  )
+}
+
+export async function getProduct(slug: string): Promise<any> {
+  return sanityFetch(
+    `*[_type == "product" && slug.current == $slug && ${NO_DRAFTS}][0]{
+      name, "slug": slug.current, tagline, type, status, liveUrl, figmaUrl, logo,
+      description, features, colors, screenshots, showOnSite
+    }`,
+    { slug }
+  )
+}
+
 export async function getProducts(): Promise<any> {
   return sanityFetch(
     `*[_type == "product" && showOnSite == true && ${NO_DRAFTS}] | order(order asc, name asc){
