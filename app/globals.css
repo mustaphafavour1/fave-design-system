@@ -2035,6 +2035,102 @@ a.overview-card:hover {
   }
 }
 
+/* ---------------------------------------------------------------------- */
+/* UI components — Layout                                                 */
+/* ---------------------------------------------------------------------- */
+
+.ui-card {
+  background: var(--color-bg-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-1);
+  width: 100%;
+  max-width: 320px;
+}
+
+.ui-card-padding-sm {
+  padding: var(--space-4);
+}
+
+.ui-card-padding-md {
+  padding: var(--space-5);
+}
+
+.ui-card-padding-lg {
+  padding: var(--space-6);
+}
+
+.ui-divider {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 0;
+  width: 100%;
+}
+
+.ui-divider-labeled {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.ui-divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.ui-divider-label {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.ui-accordion {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.ui-accordion-item + .ui-accordion-item {
+  border-top: 1px solid var(--color-border);
+}
+
+.ui-accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--color-text);
+  background: var(--color-bg-raised);
+  text-align: left;
+}
+
+.ui-accordion-trigger:hover {
+  background: var(--color-bg-subtle);
+}
+
+.ui-accordion-caret {
+  color: var(--color-text-muted);
+  transition: transform var(--duration-fast) var(--easing);
+  flex-shrink: 0;
+}
+
+.ui-accordion-caret.is-open {
+  transform: rotate(180deg);
+}
+
+.ui-accordion-content {
+  padding: 0 var(--space-4) var(--space-4);
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
 .component-preview {
   margin-bottom: var(--space-6);
 }
