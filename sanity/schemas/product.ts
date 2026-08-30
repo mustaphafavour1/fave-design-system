@@ -47,11 +47,24 @@ export default defineType({
     }),
     defineField({ name: 'tagline', title: 'Tagline', type: 'string' }),
     defineField({
+      name: 'category',
+      title: 'Category',
+      description: 'Free-text category for the showcase card, e.g. "Fintech / Investment Platform".',
+      type: 'string',
+    }),
+    defineField({
       name: 'type',
       title: 'Product Type',
       type: 'string',
       options: {
-        list: ['Consumer Web', 'Consumer Mobile', 'Internal Admin', 'Enterprise / B2B'],
+        list: [
+          'Consumer Web',
+          'Consumer Mobile',
+          'B2B2C Platform',
+          'SaaS Dashboard',
+          'Internal Admin',
+          'Enterprise / B2B',
+        ],
       },
     }),
     defineField({
@@ -70,6 +83,52 @@ export default defineType({
       options: { hotspot: true },
     }),
     defineField({ name: 'description', title: 'Description', type: 'text' }),
+    defineField({
+      name: 'positioning',
+      title: 'Positioning',
+      description: 'The sharp one- or two-line statement of who this serves and how — market angle, not a feature list.',
+      type: 'text',
+    }),
+    defineField({
+      name: 'techStack',
+      title: 'Tech Stack',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          name: 'stackItem',
+          fields: [
+            { name: 'layer', title: 'Layer', type: 'string' },
+            { name: 'technology', title: 'Technology', type: 'string' },
+          ],
+          preview: { select: { title: 'layer', subtitle: 'technology' } },
+        },
+      ],
+    }),
+    defineField({
+      name: 'typography',
+      title: 'Typography',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          name: 'typographyRole',
+          fields: [
+            { name: 'role', title: 'Role', type: 'string' },
+            { name: 'font', title: 'Font', type: 'string' },
+            { name: 'notes', title: 'Notes', type: 'string' },
+          ],
+          preview: { select: { title: 'font', subtitle: 'role' } },
+        },
+      ],
+    }),
+    defineField({
+      name: 'highlights',
+      title: 'Highlights',
+      description: 'Signature visual motifs or portfolio-worthy details — the things worth calling out about this product.',
+      type: 'array',
+      of: [{ type: 'string' }],
+    }),
     defineField({
       name: 'features',
       title: 'Features',
@@ -103,6 +162,7 @@ export default defineType({
           fields: [
             { name: 'name', title: 'Name', type: 'string' },
             { name: 'hex', title: 'Hex', type: 'string' },
+            { name: 'role', title: 'Role', type: 'string', description: 'e.g. "Primary background", "CTA accent"' },
           ],
           preview: { select: { title: 'name', subtitle: 'hex' } },
         },
@@ -131,6 +191,6 @@ export default defineType({
     defineField({ name: 'order', title: 'Order', type: 'number' }),
   ],
   preview: {
-    select: { title: 'name', subtitle: 'type', media: 'logo' },
+    select: { title: 'name', subtitle: 'category', media: 'logo' },
   },
 })

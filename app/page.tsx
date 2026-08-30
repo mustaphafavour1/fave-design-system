@@ -33,7 +33,6 @@ export default async function HomePage() {
 
   const componentCount = counts?.components ?? 0
   const productCount = counts?.products ?? (Array.isArray(products) ? products.length : 0)
-  const firstProductSlug = Array.isArray(products) && products.length > 0 ? products[0].slug : null
 
   return (
     <div>
@@ -78,42 +77,26 @@ export default async function HomePage() {
         <h2 className="section-divider-title">Start here</h2>
         <div className="card-grid">
           {overviewSections.map((section) => {
-            const href =
-              section.label === 'Products'
-                ? firstProductSlug
-                  ? `/products/${firstProductSlug}`
-                  : null
-                : section.href
+            const isProducts = section.label === 'Products'
+            const examples = isProducts
+              ? [productCount === 0 ? 'No products yet' : `${productCount} product${productCount === 1 ? '' : 's'}`]
+              : section.examples
 
-            const body = (
-              <>
+            return (
+              <Link key={section.label} href={section.href!} className="overview-card">
                 <div className="overview-card-icon">
                   <ResolvedIcon name={section.icon} size={22} weight="duotone" />
                 </div>
                 <div className="overview-card-title">{section.label}</div>
                 <p className="overview-card-description">{section.description}</p>
                 <div className="chip-row">
-                  {section.examples.length > 0 ? (
-                    section.examples.map((example) => (
-                      <span key={example} className="chip">
-                        {example}
-                      </span>
-                    ))
-                  ) : (
-                    <span className="chip">No products yet</span>
-                  )}
+                  {examples.map((example) => (
+                    <span key={example} className="chip">
+                      {example}
+                    </span>
+                  ))}
                 </div>
-              </>
-            )
-
-            return href ? (
-              <Link key={section.label} href={href} className="overview-card">
-                {body}
               </Link>
-            ) : (
-              <div key={section.label} className="overview-card is-static">
-                {body}
-              </div>
             )
           })}
         </div>

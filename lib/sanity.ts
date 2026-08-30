@@ -74,8 +74,9 @@ export async function getChangelog(): Promise<any> {
 export async function getProduct(slug: string): Promise<any> {
   return sanityFetch(
     `*[_type == "product" && slug.current == $slug && ${NO_DRAFTS}][0]{
-      name, "slug": slug.current, tagline, type, status, liveUrl, figmaUrl, logo,
-      description, features, colors, screenshots, showOnSite
+      name, "slug": slug.current, tagline, category, type, status, liveUrl, figmaUrl, logo,
+      description, positioning, techStack, typography, highlights,
+      features, colors, screenshots, showOnSite
     }`,
     { slug }
   )
@@ -84,7 +85,7 @@ export async function getProduct(slug: string): Promise<any> {
 export async function getProducts(): Promise<any> {
   return sanityFetch(
     `*[_type == "product" && showOnSite == true && ${NO_DRAFTS}] | order(order asc, name asc){
-      name, "slug": slug.current, tagline, type
+      name, "slug": slug.current, tagline, category, type, logo
     }`
   )
 }

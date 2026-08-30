@@ -10,7 +10,8 @@
     "studio:dev": "sanity dev",
     "studio:build": "sanity build",
     "studio:deploy": "sanity deploy",
-    "studio:login": "sanity login"
+    "studio:login": "sanity login",
+    "seed": "node scripts/seed.mjs"
   },
   "dependencies": {
     "next": "15.3.9",

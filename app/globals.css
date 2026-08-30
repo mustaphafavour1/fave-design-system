@@ -2606,6 +2606,103 @@ a.overview-card:hover {
 /* Product pages                                                          */
 /* ---------------------------------------------------------------------- */
 
+.product-index-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+}
+
+.product-index-card {
+  display: block;
+  padding: var(--space-6);
+  background: var(--color-bg-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: box-shadow var(--duration-base) var(--easing), border-color var(--duration-base) var(--easing),
+    transform var(--duration-base) var(--easing);
+}
+
+a.product-index-card:hover {
+  box-shadow: var(--shadow-3), var(--glow-primary);
+  border-color: var(--color-primary-subtle);
+  transform: translateY(-2px);
+}
+
+.product-index-logo {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: var(--space-4);
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-on-primary);
+}
+
+.product-index-category {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-primary);
+  margin-bottom: var(--space-2);
+}
+
+.product-index-name {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.product-index-tagline {
+  margin-top: var(--space-2);
+  font-size: 13.5px;
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+}
+
+.product-positioning {
+  padding: var(--space-5);
+  border-left: 3px solid var(--color-primary);
+  background: var(--color-bg-raised);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-8);
+}
+
+.product-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.product-highlight {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: 13.5px;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.product-highlight-marker {
+  width: 6px;
+  height: 6px;
+  border-radius: 1px;
+  background: var(--color-primary);
+  transform: rotate(45deg);
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
 .product-identity {
   display: flex;
   align-items: flex-start;

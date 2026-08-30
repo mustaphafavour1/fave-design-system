@@ -55,9 +55,15 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             />
           </div>
         ) : null}
-        {product.type || product.status ? (
+        {product.category || product.type || product.status ? (
           <table className="spec-table product-meta-table">
             <tbody>
+              {product.category ? (
+                <tr>
+                  <td className="spec-table-term">Category</td>
+                  <td>{product.category}</td>
+                </tr>
+              ) : null}
               {product.type ? (
                 <tr>
                   <td className="spec-table-term">Type</td>
@@ -75,7 +81,23 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         ) : null}
       </div>
 
+      {product.positioning ? <p className="product-positioning">{product.positioning}</p> : null}
+
       {product.description ? <p className="product-description">{product.description}</p> : null}
+
+      {product.highlights?.length ? (
+        <div className="token-section">
+          <h2 className="token-section-title">Highlights</h2>
+          <div className="product-highlights">
+            {product.highlights.map((highlight: string, index: number) => (
+              <div key={index} className="product-highlight">
+                <span className="product-highlight-marker" />
+                <span>{highlight}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : null}
 
       {product.features?.length ? (
         <div className="token-section">
@@ -98,6 +120,52 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         <div className="token-section">
           <h2 className="token-section-title">Colours</h2>
           <ColorPalette colors={product.colors} />
+        </div>
+      ) : null}
+
+      {product.typography?.length ? (
+        <div className="token-section">
+          <h2 className="token-section-title">Typography</h2>
+          <table className="spec-table">
+            <thead>
+              <tr>
+                <th className="spec-table-term">Role</th>
+                <th>Font</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              {product.typography.map((row: any, index: number) => (
+                <tr key={index}>
+                  <td className="spec-table-term">{row.role}</td>
+                  <td>{row.font}</td>
+                  <td>{row.notes}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : null}
+
+      {product.techStack?.length ? (
+        <div className="token-section">
+          <h2 className="token-section-title">Tech Stack</h2>
+          <table className="spec-table">
+            <thead>
+              <tr>
+                <th className="spec-table-term">Layer</th>
+                <th>Technology</th>
+              </tr>
+            </thead>
+            <tbody>
+              {product.techStack.map((row: any, index: number) => (
+                <tr key={index}>
+                  <td className="spec-table-term">{row.layer}</td>
+                  <td>{row.technology}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       ) : null}
 

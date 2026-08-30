@@ -25,9 +25,12 @@ export async function Sidebar() {
   const productsSection = {
     label: 'Products',
     icon: 'Package',
-    items: Array.isArray(products)
-      ? products.map((product: any) => ({ label: product.name, href: `/products/${product.slug}` }))
-      : [],
+    items: [
+      { label: 'All Products', href: '/products' },
+      ...(Array.isArray(products)
+        ? products.map((product: any) => ({ label: product.name, href: `/products/${product.slug}` }))
+        : []),
+    ],
   }
 
   return (

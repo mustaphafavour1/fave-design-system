@@ -164,11 +164,7 @@ export const overviewSections = [
   },
   {
     label: 'Products',
-    // No `/products` index route exists — only per-product pages
-    // (app/products/[slug]/page.tsx, not yet built). The homepage
-    // resolves this card's href to the first live product, or renders
-    // it non-interactive when there are none yet.
-    href: undefined as string | undefined,
+    href: '/products',
     icon: 'Package',
     description: 'Every product this design system ships into.',
     examples: [],
