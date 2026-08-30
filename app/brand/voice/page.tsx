@@ -6,7 +6,7 @@ import { getBrandPage } from '@/lib/sanity'
 export const revalidate = 60
 
 const STATIC = {
-  description: 'How Fave sounds in product copy, error messages, emails, and support content.',
+  description: 'How HeadFavour sounds in product copy, error messages, emails, and support content.',
   dos: [
     'Say the specific thing that happened, and the specific next step — "Your card was declined" not "Something went wrong."',
     'Write like a knowledgeable, friendly colleague, not a legal disclaimer.',
@@ -37,7 +37,7 @@ export default async function BrandVoicePage() {
       ) : (
         <div className="prose">
           <p>
-            Fave&apos;s voice is clear, confident, and human. We explain what happened and what to do
+            HeadFavour&apos;s voice is clear, confident, and human. We explain what happened and what to do
             next — we don&apos;t hide behind vague copy or over-apologise for routine states.
           </p>
           <p>

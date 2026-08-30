@@ -112,7 +112,7 @@ export default async function DesignTokensPage() {
           <div className="token-type-sample">
             <div className="token-type-label">--font-mono · 400 · 13px</div>
             <div style={{ fontFamily: 'var(--font-mono)', fontSize: 13 }}>
-              ref_8f3a2c1e · #4F46E5 · 200ms
+              ref_8f3a2c1e · #F7C948 · 200ms
             </div>
           </div>
         </div>

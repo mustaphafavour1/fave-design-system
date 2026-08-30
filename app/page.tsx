@@ -43,7 +43,7 @@ export default async function HomePage() {
           Design System v{pkg.version}
         </div>
         <h1 className="hero-title">
-          The single source of truth for how Fave designs and builds.
+          The single source of truth for how HeadFavour designs and builds.
         </h1>
         <p className="hero-description">
           Brand, foundations, components, patterns, and products — documented in one place so

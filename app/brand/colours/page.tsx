@@ -8,16 +8,16 @@ const STATIC = {
   description:
     'The colour system is a semantic layer over numeric scales. Product teams reach for the semantic alias below, never a raw scale value.',
   colors: [
-    { name: 'Primary', hex: '#4F46E5' },
-    { name: 'Primary Dark', hex: '#3730A3' },
-    { name: 'Primary Faint', hex: '#EEF2FF' },
-    { name: 'Text', hex: '#0F172A' },
-    { name: 'Text Secondary', hex: '#475569' },
-    { name: 'Border', hex: '#E2E8F0' },
-    { name: 'Success', hex: '#047857' },
-    { name: 'Warning', hex: '#B45309' },
-    { name: 'Error', hex: '#B91C1C' },
-    { name: 'Info', hex: '#4338CA' },
+    { name: 'Background', hex: '#0A0A0F' },
+    { name: 'Primary', hex: '#F7C948' },
+    { name: 'Primary Dark', hex: '#E6B830' },
+    { name: 'Text', hex: '#F0F0F5' },
+    { name: 'Text Secondary', hex: '#9494AC' },
+    { name: 'Border', hex: '#1E1E2E' },
+    { name: 'Success', hex: '#4ADE80' },
+    { name: 'Warning', hex: '#FB923C' },
+    { name: 'Error', hex: '#F87171' },
+    { name: 'Info', hex: '#9494F5' },
   ],
 }
 

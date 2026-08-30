@@ -7,14 +7,14 @@ export const revalidate = 60
 // luminance formula) — not estimated. Re-verify here whenever a colour
 // token changes; this page is what "authoritative" means in practice.
 const CONTRAST_PAIRS = [
-  { label: 'Text', bg: 'var(--color-bg)', fg: 'var(--color-text)', ratio: '17.1:1' },
-  { label: 'Text secondary', bg: 'var(--color-bg)', fg: 'var(--color-text-secondary)', ratio: '7.2:1' },
+  { label: 'Text', bg: 'var(--color-bg)', fg: 'var(--color-text)', ratio: '17.4:1' },
+  { label: 'Text secondary', bg: 'var(--color-bg)', fg: 'var(--color-text-secondary)', ratio: '6.7:1' },
   { label: 'Text muted', bg: 'var(--color-bg)', fg: 'var(--color-text-muted)', ratio: '5.2:1' },
-  { label: 'Button text', bg: 'var(--color-primary)', fg: '#ffffff', ratio: '6.3:1' },
-  { label: 'Success text', bg: 'var(--color-success-bg)', fg: 'var(--color-success-text)', ratio: '5.2:1' },
-  { label: 'Warning text', bg: 'var(--color-warning-bg)', fg: 'var(--color-warning-text)', ratio: '4.8:1' },
-  { label: 'Error text', bg: 'var(--color-error-bg)', fg: 'var(--color-error-text)', ratio: '5.9:1' },
-  { label: 'Info text', bg: 'var(--color-info-bg)', fg: 'var(--color-info-text)', ratio: '7.1:1' },
+  { label: 'Button text', bg: 'var(--color-primary)', fg: 'var(--color-on-primary)', ratio: '12.6:1' },
+  { label: 'Success text', bg: 'var(--color-success-bg)', fg: 'var(--color-success-text)', ratio: '9.8:1' },
+  { label: 'Warning text', bg: 'var(--color-warning-bg)', fg: 'var(--color-warning-text)', ratio: '7.7:1' },
+  { label: 'Error text', bg: 'var(--color-error-bg)', fg: 'var(--color-error-text)', ratio: '6.4:1' },
+  { label: 'Info text', bg: 'var(--color-info-bg)', fg: 'var(--color-info-text)', ratio: '6.7:1' },
 ]
 
 const STATIC = {

@@ -7,7 +7,7 @@ export const revalidate = 60
 
 const STATIC = {
   description:
-    'The Fave mark is the primary signature of the brand. Use the files provided in Sanity — never recreate, redraw, or approximate the mark.',
+    'The HeadFavour mark is the primary signature of the brand. Use the files provided in Sanity — never recreate, redraw, or approximate the mark.',
   dos: [
     'Maintain clear space around the mark equal to at least the height of the mark itself.',
     'Use the light-background version on white or light surfaces, and the dark-background version on dark surfaces.',

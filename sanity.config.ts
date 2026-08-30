@@ -7,7 +7,7 @@ import { structure } from './sanity/structure'
 
 export default defineConfig({
   name: 'default',
-  title: 'Fave Design System',
+  title: 'HeadFavour',
 
   projectId: 'm7vu676k',
   dataset: 'production',

@@ -7,45 +7,56 @@
 /* ---------------------------------------------------------------------- */
 
 :root {
-  /* Colour — semantic aliases over a numeric scale. Placeholder brand
-     colour (indigo) — swap on the Brand → Colours page once real brand
-     values are set, this is the only place they need to change. */
-  --color-primary: #4f46e5;
-  --color-primary-dark: #3730a3;
-  --color-primary-faint: #eef2ff;
-  --color-primary-subtle: #c7d2fe;
+  /* Colour — dark navy + a single danfo-gold accent, in the style of
+     Stampdx and Idea OS (two products in the Products section). Every
+     pair below is verified against WCAG AA at both the darkest and
+     lightest surface it appears on — see Foundations → Accessibility. */
+  --color-primary: #f7c948;
+  --color-primary-dark: #e6b830;
+  --color-primary-faint: rgba(247, 201, 72, 0.1);
+  --color-primary-subtle: rgba(247, 201, 72, 0.24);
+  /* Gold and the error red are both bright — white text on either fails
+     AA badly (white-on-gold ~1.3:1, white-on-error 2.77:1). Anything
+     sitting on --color-primary or --color-error-text as a solid fill
+     uses this instead. */
+  --color-on-primary: #0a0a0f;
 
-  --color-text: #0f172a;
-  --color-text-secondary: #475569;
-  --color-text-muted: #5b6b84;
+  --color-text: #f0f0f5;
+  --color-text-secondary: #9494ac;
+  --color-text-muted: #80809a;
 
-  --color-border: #e2e8f0;
-  --color-border-strong: #cbd5e1;
+  --color-border: #1e1e2e;
+  --color-border-strong: #2a2a3a;
 
-  --color-bg: #f8fafc;
-  --color-bg-raised: #ffffff;
-  --color-bg-subtle: #f1f5f9;
+  --color-bg: #0a0a0f;
+  --color-bg-raised: #111118;
+  --color-bg-subtle: #16161f;
 
-  /* Status */
-  --color-success-bg: #ecfdf5;
-  --color-success-border: #a7f3d0;
-  --color-success-text: #047857;
-  --color-warning-bg: #fffbeb;
-  --color-warning-border: #fde68a;
-  --color-warning-text: #b45309;
-  --color-error-bg: #fef2f2;
-  --color-error-border: #fecaca;
-  --color-error-text: #b91c1c;
-  --color-info-bg: #eef2ff;
-  --color-info-border: #c7d2fe;
-  --color-info-text: #4338ca;
+  /* Status — tinted-badge formula: bg at 10% opacity of the category
+     colour, border at ~24%, text at full opacity. */
+  --color-success-bg: rgba(74, 222, 128, 0.1);
+  --color-success-border: rgba(74, 222, 128, 0.24);
+  --color-success-text: #4ade80;
+  --color-warning-bg: rgba(251, 146, 60, 0.1);
+  --color-warning-border: rgba(251, 146, 60, 0.24);
+  --color-warning-text: #fb923c;
+  --color-error-bg: rgba(248, 113, 113, 0.1);
+  --color-error-border: rgba(248, 113, 113, 0.24);
+  --color-error-text: #f87171;
+  --color-info-bg: rgba(122, 122, 240, 0.1);
+  --color-info-border: rgba(122, 122, 240, 0.24);
+  --color-info-text: #9494f5;
 
-  /* Typography — system stacks by default; swap in real brand typefaces
-     via next/font once chosen. */
-  --font-sans:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  --font-display:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  /* Nav wayfinding — the collapsible sidebar group indent guide only,
+     deliberately muted and distinct from any active-item colour. */
+  --color-nav-guide: rgba(255, 255, 255, 0.1);
+
+  /* Typography — Parkinsans throughout (see app/layout.tsx for the
+     next/font/google load); mono stays system since none was specified. */
+  --font-sans: var(--font-parkinsans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif;
+  --font-display: var(--font-parkinsans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
 
   /* Spacing — 4px base unit */
@@ -65,30 +76,36 @@
   --radius-xl: 16px;
   --radius-full: 9999px;
 
-  /* Elevation */
+  /* Elevation — dark-mode shadows need more opacity than light-mode ones
+     to read at all against a near-black page. */
   --shadow-0: none;
-  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-2: 0 2px 8px rgba(0, 0, 0, 0.06);
-  --shadow-3: 0 4px 16px rgba(0, 0, 0, 0.08);
-  --shadow-4: 0 8px 24px rgba(0, 0, 0, 0.1);
-  --shadow-5: 0 16px 48px rgba(0, 0, 0, 0.14);
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-2: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-3: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-4: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-5: 0 16px 48px rgba(0, 0, 0, 0.5);
+  /* Accent glow — the reference products' hover treatment for elevated
+     surfaces on dark backgrounds, used alongside (not instead of) shadow. */
+  --glow-primary: 0 0 20px rgba(247, 201, 72, 0.15);
 
   /* Motion */
   --duration-fast: 120ms;
   --duration-base: 200ms;
   --easing: cubic-bezier(0.4, 0, 0.2, 1);
 
-  /* Site shell — dark sidebar mode (spec §5, mode 1) */
+  /* Site shell — sidebar shares the page's own background, separated
+     only by a border (the same pattern Idea OS's own sidebar uses).
+     Only the active-item treatment is a genuinely distinct pattern. */
   --sidebar-width: 260px;
   --topbar-height: 64px;
-  --sidebar-bg: #0b1220;
-  --sidebar-bg-raised: #131b2e;
-  --sidebar-text: #94a3b8;
-  --sidebar-text-strong: #e2e8f0;
-  --sidebar-text-active: #ffffff;
-  --sidebar-active-bg: rgba(79, 70, 229, 0.25);
-  --sidebar-active-border: #818cf8;
-  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-bg: var(--color-bg);
+  --sidebar-bg-raised: var(--color-bg-subtle);
+  --sidebar-text: var(--color-text-muted);
+  --sidebar-text-strong: var(--color-text);
+  --sidebar-text-active: var(--color-primary);
+  --sidebar-active-bg: rgba(247, 201, 72, 0.15);
+  --sidebar-active-border: var(--color-primary);
+  --sidebar-border: var(--color-border);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -178,7 +195,7 @@ pre {
 
 .btn-primary {
   background: var(--color-primary);
-  color: #ffffff;
+  color: var(--color-on-primary);
 }
 
 .btn-primary:hover {
@@ -236,7 +253,7 @@ pre {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: var(--color-on-primary);
   font-size: 13px;
   font-weight: 700;
   flex-shrink: 0;
@@ -251,15 +268,70 @@ pre {
   margin-bottom: var(--space-5);
 }
 
-.nav-section-label {
-  padding: 0 var(--space-3);
-  margin-bottom: var(--space-2);
+.nav-group-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  margin-bottom: var(--space-1);
+  border-radius: var(--radius-md);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--sidebar-text);
+  opacity: 0.85;
+  transition: background var(--duration-fast) var(--easing), opacity var(--duration-fast) var(--easing);
+}
+
+.nav-group-trigger:hover {
+  background: var(--sidebar-bg-raised);
+  opacity: 1;
+}
+
+.nav-group-trigger-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.nav-group-chevron {
+  flex-shrink: 0;
+  color: var(--sidebar-text);
   opacity: 0.7;
+  transition: transform var(--duration-base) var(--easing);
+}
+
+.nav-group-chevron.is-open {
+  transform: rotate(90deg);
+}
+
+/* CSS grid-rows technique: animates to the exact natural content height
+   with no JS measuring, unlike max-height which needs a guessed bound. */
+.nav-group-collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--duration-base) var(--easing);
+}
+
+.nav-group-collapse.is-open {
+  grid-template-rows: 1fr;
+}
+
+.nav-group-collapse-inner {
+  overflow: hidden;
+}
+
+.nav-group-children {
+  position: relative;
+  margin-left: 20px;
+  padding-left: 16px;
+  padding-top: 2px;
+  padding-bottom: 4px;
+  border-left: 1px solid var(--color-nav-guide);
 }
 
 .nav-group-label {
@@ -282,6 +354,13 @@ pre {
   color: var(--sidebar-text);
   border-left: 2px solid transparent;
   transition: background var(--duration-fast) var(--easing), color var(--duration-fast) var(--easing);
+}
+
+.nav-link-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
 }
 
 .nav-link:hover {
@@ -337,7 +416,7 @@ pre {
   justify-content: space-between;
   gap: var(--space-4);
   padding: 0 var(--space-8);
-  background: rgba(248, 250, 252, 0.85);
+  background: rgba(10, 10, 15, 0.85);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--color-border);
 }
@@ -577,7 +656,7 @@ pre {
 }
 
 a.overview-card:hover {
-  box-shadow: var(--shadow-3);
+  box-shadow: var(--shadow-3), var(--glow-primary);
   border-color: var(--color-primary-subtle);
   transform: translateY(-2px);
 }
@@ -959,12 +1038,23 @@ a.overview-card:hover {
 
 .logo-showcase {
   height: 200px;
+  /* Deliberately a literal light checkerboard, independent of the site's
+     own dark theme — this demonstrates the mark against a genuinely
+     light surface, per the Logo page's light/dark usage guidance. */
+  background-color: #ffffff;
+  background-image: linear-gradient(45deg, #f1f5f9 25%, transparent 25%),
+    linear-gradient(-45deg, #f1f5f9 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #f1f5f9 75%),
+    linear-gradient(-45deg, transparent 75%, #f1f5f9 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  border-color: rgba(0, 0, 0, 0.1);
 }
 
 .logo-showcase-dark {
-  background: #0b1220;
+  background: var(--color-bg);
   background-image: none;
-  border-color: transparent;
+  border-color: var(--color-border);
 }
 
 .logo-mark-placeholder {
@@ -972,7 +1062,7 @@ a.overview-card:hover {
   height: 96px;
   border-radius: var(--radius-lg);
   background: var(--color-primary);
-  color: #fff;
+  color: var(--color-on-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1156,7 +1246,7 @@ a.overview-card:hover {
 
 .ui-button-primary {
   background: var(--color-primary);
-  color: #ffffff;
+  color: var(--color-on-primary);
 }
 
 .ui-button-primary:not(:disabled):hover {
@@ -1186,11 +1276,11 @@ a.overview-card:hover {
 
 .ui-button-danger {
   background: var(--color-error-text);
-  color: #ffffff;
+  color: var(--color-on-primary);
 }
 
 .ui-button-danger:not(:disabled):hover {
-  background: #991b1b;
+  background: #ef4444;
 }
 
 .ui-button-spinner {
@@ -1204,7 +1294,7 @@ a.overview-card:hover {
 
 .ui-button-secondary .ui-button-spinner,
 .ui-button-ghost .ui-button-spinner {
-  border-color: rgba(15, 23, 42, 0.2);
+  border-color: rgba(255, 255, 255, 0.15);
   border-top-color: var(--color-text);
 }
 
@@ -1413,7 +1503,7 @@ a.overview-card:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: var(--color-on-primary);
   flex-shrink: 0;
   transition: background var(--duration-fast) var(--easing), border-color var(--duration-fast) var(--easing);
 }
@@ -1904,7 +1994,8 @@ a.overview-card:hover {
 .ui-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.5);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2407,7 +2498,7 @@ a.overview-card:hover {
   height: 36px;
   border-radius: var(--radius-md);
   background: var(--color-primary);
-  color: #fff;
+  color: var(--color-on-primary);
   display: flex;
   align-items: center;
   justify-content: center;

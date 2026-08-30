@@ -1,6 +1,7 @@
 import { navigation } from '@/lib/navigation'
 import { getProducts, getNavSections } from '@/lib/sanity'
 import { NavLink } from './NavLink'
+import { NavGroup } from './NavGroup'
 
 export async function Sidebar() {
   const [products, dynamicSections] = await Promise.all([getProducts(), getNavSections()])
@@ -21,62 +22,42 @@ export async function Sidebar() {
   const mainSections = navigation.slice(0, contributingIndex)
   const contributing = navigation[contributingIndex]
 
+  const productsSection = {
+    label: 'Products',
+    icon: 'Package',
+    items: Array.isArray(products)
+      ? products.map((product: any) => ({ label: product.name, href: `/products/${product.slug}` }))
+      : [],
+  }
+
   return (
     <aside className="sidebar">
       <div className="sidebar-brand">
-        <span className="sidebar-brand-mark">F</span>
-        Fave Design System
+        <span className="sidebar-brand-mark">H</span>
+        HeadFavour
       </div>
       <nav className="sidebar-nav">
-        {mainSections.map((section) => (
-          <div className="nav-section" key={section.label}>
-            {section.href ? (
-              <NavLink href={section.href} topLevel badge={badgeOverrides.get(section.href)}>
+        {mainSections.map((section) =>
+          section.href ? (
+            <div className="nav-section" key={section.label}>
+              <NavLink href={section.href} topLevel icon={section.icon} badge={badgeOverrides.get(section.href)}>
                 {section.label}
               </NavLink>
-            ) : (
-              <>
-                <div className="nav-section-label">{section.label}</div>
-                {section.items?.map((item) => (
-                  <NavLink key={item.href} href={item.href} badge={badgeOverrides.get(item.href) ?? item.badge}>
-                    {item.label}
-                  </NavLink>
-                ))}
-                {section.groups?.map((group) => (
-                  <div key={group.label}>
-                    <div className="nav-group-label">{group.label}</div>
-                    {group.items.map((item) => (
-                      <NavLink
-                        key={item.href}
-                        href={item.href}
-                        badge={badgeOverrides.get(item.href) ?? item.badge}
-                      >
-                        {item.label}
-                      </NavLink>
-                    ))}
-                  </div>
-                ))}
-              </>
-            )}
-          </div>
-        ))}
+            </div>
+          ) : (
+            <div className="nav-section" key={section.label}>
+              <NavGroup section={section} badgeOverrides={badgeOverrides} />
+            </div>
+          )
+        )}
 
         <div className="nav-section">
-          <div className="nav-section-label">Products</div>
-          {Array.isArray(products) && products.length > 0 ? (
-            products.map((product: any) => (
-              <NavLink key={product.slug} href={`/products/${product.slug}`}>
-                {product.name}
-              </NavLink>
-            ))
-          ) : (
-            <div className="nav-empty">No products yet</div>
-          )}
+          <NavGroup section={productsSection} badgeOverrides={badgeOverrides} emptyMessage="No products yet" />
         </div>
 
         {contributing ? (
           <div className="nav-section">
-            <NavLink href={contributing.href!} topLevel>
+            <NavLink href={contributing.href!} topLevel icon={contributing.icon}>
               {contributing.label}
             </NavLink>
           </div>
