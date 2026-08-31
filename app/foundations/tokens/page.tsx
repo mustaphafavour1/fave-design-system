@@ -186,13 +186,6 @@ export default async function DesignTokensPage() {
           </tbody>
         </table>
       </div>
-
-      {!sanity ? (
-        <p className="empty-note">
-          Showing static fallback rules — add a &quot;Foundation&quot; document in Sanity Studio with
-          slug <code>tokens</code> to manage the usage rules above from the CMS.
-        </p>
-      ) : null}
     </div>
   )
 }

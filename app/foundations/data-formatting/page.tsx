@@ -93,13 +93,6 @@ export default async function DataFormattingPage() {
           </tbody>
         </table>
       </div>
-
-      {!sanity ? (
-        <p className="empty-note">
-          Showing static fallback rules — add a &quot;Foundation&quot; document in Sanity Studio with
-          slug <code>data-formatting</code> to manage the usage rules above from the CMS.
-        </p>
-      ) : null}
     </div>
   )
 }

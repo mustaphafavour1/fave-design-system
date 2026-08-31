@@ -55,13 +55,6 @@ export default async function BrandVoicePage() {
       <div className="stack-block">
         <DosDonts dos={dos} donts={donts} />
       </div>
-
-      {!sanity ? (
-        <p className="empty-note">
-          Showing static fallback copy — add a &quot;Brand Page&quot; document in Sanity Studio with
-          slug <code>voice</code> to manage this content from the CMS.
-        </p>
-      ) : null}
     </div>
   )
 }

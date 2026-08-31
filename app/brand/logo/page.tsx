@@ -62,13 +62,6 @@ export default async function BrandLogoPage() {
       <div className="stack-block">
         <DosDonts dos={dos} donts={donts} />
       </div>
-
-      {images.length === 0 ? (
-        <p className="empty-note">
-          Showing a placeholder mark — add a &quot;Brand Page&quot; document in Sanity Studio with
-          slug <code>logo</code> and upload the real logo files to the Images field to replace it.
-        </p>
-      ) : null}
     </div>
   )
 }

@@ -5,16 +5,19 @@ import { getChangelog } from '@/lib/sanity'
 export const revalidate = 60
 
 const STEPS = [
-  { title: 'Open a discussion', description: 'Propose the change before any design or code work starts.' },
-  { title: 'Design in Figma first', description: 'Always before code — see the naming convention below.' },
-  { title: 'Get sign-off', description: 'One designer and one engineer approve the Figma spec.' },
+  { title: 'Open a discussion', description: 'Propose the change and the reasoning behind it before any work starts.' },
+  { title: 'Get it approved', description: 'One other designer or engineer signs off on the approach before anything gets built.' },
+  {
+    title: 'Design in Figma, when it earns it',
+    description: 'For a new component or a real visual change. Most changes go straight to code — see the naming convention below for when Figma applies.',
+  },
   { title: 'Build against the checklist', description: 'Every item below, not just the obvious ones.' },
-  { title: 'Open a PR', description: 'Title as feat(component): ... or fix(component): ..., linked to the Figma spec.' },
+  { title: 'Open a PR', description: 'Title as feat(component): ... or fix(component): ..., linked to the Figma spec if there is one.' },
   { title: 'Update the changelog', description: 'Add an entry before merging, not after.' },
 ]
 
 const CHECKLIST = [
-  'Figma spec complete',
+  'Figma spec complete, if the change needed one',
   'All props typed and documented',
   'Every interactive state covered',
   'Empty state defined',
@@ -39,7 +42,7 @@ export default async function ContributingPage() {
       <PageHeader
         section="Contributing"
         title="Contributing"
-        description="How a change gets proposed, designed, built, and shipped."
+        description="How a change gets proposed, approved, and shipped. Most changes go straight to code, thought through and signed off first; Figma comes in when a change is genuinely worth designing first."
       />
 
       <div className="token-section">
@@ -92,8 +95,7 @@ export default async function ContributingPage() {
         <h2 className="token-section-title">Changelog</h2>
         {entries.length === 0 ? (
           <p className="empty-note">
-            No changelog entries yet — add a &quot;Changelog Entry&quot; document in Sanity Studio to
-            populate this list.
+            When there are updates to the design system, they will reflect here.
           </p>
         ) : (
           <div className="changelog-list">

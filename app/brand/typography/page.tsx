@@ -74,13 +74,6 @@ export default async function BrandTypographyPage() {
           </tbody>
         </table>
       </div>
-
-      {!sanity ? (
-        <p className="empty-note">
-          Showing static fallback copy — add a &quot;Brand Page&quot; document in Sanity Studio with
-          slug <code>typography</code> to manage this description from the CMS.
-        </p>
-      ) : null}
     </div>
   )
 }

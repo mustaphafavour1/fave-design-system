@@ -30,13 +30,6 @@ export default async function BrandColoursPage() {
   return (
     <div>
       <PageHeader section="Brand" title="Colours" description={description} />
-      <ColorPalette colors={colors} />
-      {!sanity ? (
-        <p className="empty-note">
-          Showing static fallback colours — add a &quot;Brand Page&quot; document in Sanity Studio
-          with slug <code>colours</code> to manage this content from the CMS.
-        </p>
-      ) : null}
-    </div>
+      <ColorPalette colors={colors} />    </div>
   )
 }
