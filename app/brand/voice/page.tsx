@@ -6,7 +6,7 @@ import { getBrandPage } from '@/lib/sanity'
 export const revalidate = 60
 
 const STATIC = {
-  description: 'How HeadFavour sounds in product copy, error messages, emails, and support content.',
+  description: 'How I want HeadFavour to sound, whether that’s product copy, an error message or a receipt email.',
   dos: [
     'Say the specific thing that happened, and the specific next step — "Your card was declined" not "Something went wrong."',
     'Write like a knowledgeable, friendly colleague, not a legal disclaimer.',
@@ -39,13 +39,15 @@ export default async function BrandVoicePage() {
       ) : (
         <div className="prose">
           <p>
-            HeadFavour&apos;s voice is clear, confident, and human. We explain what happened and what to do
-            next — we don&apos;t hide behind vague copy or over-apologise for routine states.
+            HeadFavour sounds clear, confident and human. We say what happened and what to do next;
+            we don&apos;t hide behind vague copy or over-apologise for a routine state. I strongly
+            believe a product should talk to people the way a good colleague would, not a legal
+            disclaimer.
           </p>
           <p>
-            Tone flexes with context: a dashboard empty state is calm and practical, a destructive
-            action&apos;s confirmation is direct and unambiguous, and a success message is brief rather
-            than celebratory.
+            Tone still moves with context. A dashboard empty state stays calm and practical. A
+            destructive action&apos;s confirmation is direct, no softening. And a success message is
+            brief, not celebratory; the work speaks for itself.
           </p>
         </div>
       )}

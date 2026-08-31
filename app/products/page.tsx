@@ -15,7 +15,7 @@ export default async function ProductsIndexPage() {
       <PageHeader
         section="Products"
         title="Products"
-        description="Every product this design system ships into — real, live products, each documented as its own case study."
+        description="Every product this design system actually ships into; real, live products, each one documented as its own case study. Ideas are easy. These are the ones I saw through."
       />
 
       {list.length === 0 ? (

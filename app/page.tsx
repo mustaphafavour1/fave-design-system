@@ -10,21 +10,21 @@ export const revalidate = 60
 const PRINCIPLES = [
   {
     title: 'Tokens, not values',
-    description: 'Every colour, space, and radius is a token. Hardcoding a raw value is always a bug.',
+    description: 'Every colour, space and radius is a token. A hardcoded value isn’t a shortcut; it’s a bug waiting to be found.',
   },
   {
     title: 'Document the edges',
     description:
-      'Empty, loading, and error states are designed and shipped alongside the happy path, never after.',
+      'Empty, loading and error states get designed with the happy path, not after it. I’ve shipped enough half-finished flows to know that gap always shows.',
   },
   {
     title: 'One source of truth',
     description:
-      'Code owns what only code can render. Sanity owns everything text and image that changes often.',
+      'Code owns what only code can render. Sanity owns the words and images that change often; nobody should need a deploy to fix a typo.',
   },
   {
     title: 'Accessible by default',
-    description: 'WCAG AA contrast and full keyboard support are requirements, not a follow-up pass.',
+    description: 'WCAG AA contrast and full keyboard support aren’t a follow-up pass. I check them before I call anything done.',
   },
 ]
 
@@ -42,11 +42,12 @@ export default async function HomePage() {
           Design System v{pkg.version}
         </div>
         <h1 className="hero-title">
-          The single source of truth for how HeadFavour designs and builds.
+          How I design and build, all in one place.
         </h1>
         <p className="hero-description">
-          Brand, foundations, components, patterns, and products — documented in one place so
-          design and engineering never drift apart.
+          Brand, foundations, components, patterns and products; documented once, so design and
+          engineering never drift apart. I’d rather write it down properly than explain it again
+          in every handoff.
         </p>
         <div className="hero-ctas">
           <Link href="/foundations/tokens" className="btn btn-primary">

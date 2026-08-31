@@ -745,13 +745,13 @@ const brandPages = [
     _type: 'brandPage',
     title: 'Voice & Tone',
     slug: slug('voice'),
-    description: 'How HeadFavour sounds in product copy, error messages, emails, and support content.',
+    description: 'How I want HeadFavour to sound, whether that’s product copy, an error message or a receipt email.',
     body: [
       block(
-        "HeadFavour's voice is clear, confident, and human. We explain what happened and what to do next — we don't hide behind vague copy or over-apologise for routine states."
+        "HeadFavour sounds clear, confident and human. We say what happened and what to do next; we don't hide behind vague copy or over-apologise for a routine state. I strongly believe a product should talk to people the way a good colleague would, not a legal disclaimer."
       ),
       block(
-        "Tone flexes with context: a dashboard empty state is calm and practical, a destructive action's confirmation is direct and unambiguous, and a success message is brief rather than celebratory."
+        "Tone still moves with context. A dashboard empty state stays calm and practical. A destructive action's confirmation is direct, no softening. And a success message is brief, not celebratory; the work speaks for itself."
       ),
     ],
     dos: [

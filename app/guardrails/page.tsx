@@ -19,7 +19,7 @@ export default async function GuardrailsOverviewPage() {
       <PageHeader
         section="AI Design Guardrails"
         title="AI Design Guardrails"
-        description="The checklists used to grade whatever an AI design agent produces before it ships. Patterns and Components document what to build with; this is what to check the result against."
+        description="The checklists I grade AI-produced design against before it ships. Patterns and Components are what to build with; this is what the result gets checked against."
       />
 
       <div className="card-grid">
