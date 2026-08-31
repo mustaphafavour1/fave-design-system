@@ -3,14 +3,16 @@ import { ShieldCheck } from '@phosphor-icons/react/dist/ssr'
 import { PageHeader } from '@/components/docs/PageHeader'
 import { getGuardrailCount, type GuardrailPlatform } from '@/lib/guardrails'
 
+export const revalidate = 60
+
 const PLATFORMS: { slug: GuardrailPlatform; label: string; href: string }[] = [
   { slug: 'websites', label: 'Websites', href: '/guardrails/websites' },
   { slug: 'dashboards', label: 'Dashboards', href: '/guardrails/dashboards' },
   { slug: 'mobile', label: 'Mobile Apps', href: '/guardrails/mobile' },
 ]
 
-export default function GuardrailsOverviewPage() {
-  const platforms = PLATFORMS.map((p) => ({ ...p, count: getGuardrailCount(p.slug) }))
+export default async function GuardrailsOverviewPage() {
+  const platforms = await Promise.all(PLATFORMS.map(async (p) => ({ ...p, count: await getGuardrailCount(p.slug) })))
 
   return (
     <div>

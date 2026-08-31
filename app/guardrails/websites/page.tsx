@@ -2,8 +2,10 @@ import { PageHeader } from '@/components/docs/PageHeader'
 import { GuardrailList } from '@/components/docs/GuardrailList'
 import { getGuardrailCount } from '@/lib/guardrails'
 
-export default function WebsiteGuardrailsPage() {
-  const count = getGuardrailCount('websites')
+export const revalidate = 60
+
+export default async function WebsiteGuardrailsPage() {
+  const count = await getGuardrailCount('websites')
 
   return (
     <div>

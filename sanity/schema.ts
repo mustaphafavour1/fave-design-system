@@ -8,6 +8,7 @@ import brandSettings from './schemas/brandSettings'
 import product from './schemas/product'
 import changelogEntry from './schemas/changelogEntry'
 import navSection from './schemas/navSection'
+import guardrailDoc from './schemas/guardrailDoc'
 
 export const schemaTypes: SchemaTypeDefinition[] = [
   component,
@@ -18,4 +19,5 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   product,
   changelogEntry,
   navSection,
+  guardrailDoc,
 ]

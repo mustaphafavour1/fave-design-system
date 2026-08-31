@@ -90,6 +90,15 @@ export async function getProducts(): Promise<any> {
   )
 }
 
+export async function getGuardrailDocs(platform: string): Promise<any> {
+  return sanityFetch(
+    `*[_type == "guardrailDoc" && platform == $platform && ${NO_DRAFTS}] | order(order asc, title asc){
+      title, "fileUrl": file.asset->url
+    }`,
+    { platform }
+  )
+}
+
 export async function getNavSections(): Promise<any> {
   return sanityFetch(
     `*[_type == "navSection" && ${NO_DRAFTS}] | order(order asc){
