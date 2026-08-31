@@ -43,6 +43,30 @@ export default defineType({
       of: [{ type: 'string' }],
     }),
     defineField({
+      name: 'fontSpecimens',
+      title: 'Font Specimens',
+      description: 'Major fonts in use across products (Typography page only). Drag to reorder.',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          name: 'fontSpecimen',
+          fields: [
+            { name: 'fontFamily', title: 'Font name', type: 'string', validation: (Rule) => Rule.required() },
+            {
+              name: 'googleFont',
+              title: 'Google Fonts family name',
+              description: 'Exact family name as it appears on fonts.google.com, e.g. "Plus Jakarta Sans". Leave blank if it isn’t on Google Fonts.',
+              type: 'string',
+            },
+            { name: 'caption', title: 'Caption', description: 'What it’s used for.', type: 'string' },
+            { name: 'usedBy', title: 'Used by', description: 'Product name, e.g. "MonieMatch".', type: 'string' },
+          ],
+          preview: { select: { title: 'fontFamily', subtitle: 'usedBy' } },
+        },
+      ],
+    }),
+    defineField({
       name: 'colors',
       title: 'Colours',
       type: 'array',

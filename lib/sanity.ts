@@ -30,7 +30,7 @@ async function sanityFetch(query: string, params: Record<string, unknown> = {}):
 export async function getBrandPage(slug: string): Promise<any> {
   return sanityFetch(
     `*[_type == "brandPage" && slug.current == $slug && ${NO_DRAFTS}][0]{
-      title, "slug": slug.current, description, body, dos, donts, colors, images
+      title, "slug": slug.current, description, body, dos, donts, colors, images, fontSpecimens
     }`,
     { slug }
   )
@@ -86,6 +86,14 @@ export async function getProducts(): Promise<any> {
   return sanityFetch(
     `*[_type == "product" && showOnSite == true && ${NO_DRAFTS}] | order(order asc, name asc){
       name, "slug": slug.current, tagline, category, type, logo
+    }`
+  )
+}
+
+export async function getProductPalettes(): Promise<any> {
+  return sanityFetch(
+    `*[_type == "product" && showOnSite == true && count(colors) > 0 && ${NO_DRAFTS}] | order(order asc, name asc){
+      name, "slug": slug.current, colors
     }`
   )
 }

@@ -14,17 +14,68 @@ const TYPE_SCALE = [
   { label: 'Caption', token: '--font-sans · 500', px: 12 },
 ]
 
+const FONT_SPECIMENS = [
+  {
+    fontFamily: 'Fraunces',
+    googleFont: 'Fraunces',
+    caption: 'App display face — headlines, match scores, currency amounts.',
+    usedBy: 'MonieMatch',
+  },
+  {
+    fontFamily: 'Nunito',
+    googleFont: 'Nunito',
+    caption: 'App body copy, labels, and buttons.',
+    usedBy: 'MonieMatch',
+  },
+  {
+    fontFamily: 'Bricolage Grotesque',
+    googleFont: 'Bricolage Grotesque',
+    caption: 'Headings and the wordmark.',
+    usedBy: 'Stampdx',
+  },
+  {
+    fontFamily: 'Plus Jakarta Sans',
+    googleFont: 'Plus Jakarta Sans',
+    caption: 'UI text and paragraphs.',
+    usedBy: 'Stampdx',
+  },
+  {
+    fontFamily: 'Syne',
+    googleFont: 'Syne',
+    caption: 'Display, headings, and UI labels.',
+    usedBy: 'Kronikl',
+  },
+  {
+    fontFamily: 'Inter',
+    googleFont: 'Inter',
+    caption: 'Body copy.',
+    usedBy: 'Kronikl',
+  },
+]
+
 const STATIC = {
   description:
     'A two-font system: a display face for headings, stat values, and the logo wordmark, and a body face for everything else. A monospace face is reserved for reference IDs, hex codes, and code.',
 }
 
+function googleFontsHref(specimens: { googleFont?: string }[]) {
+  const families = specimens
+    .map((s) => s.googleFont?.trim())
+    .filter((name): name is string => Boolean(name))
+    .map((name) => `family=${encodeURIComponent(name).replace(/%20/g, '+')}:wght@400;600;700`)
+
+  return families.length > 0 ? `https://fonts.googleapis.com/css2?${families.join('&')}&display=swap` : null
+}
+
 export default async function BrandTypographyPage() {
   const sanity = await getBrandPage('typography')
   const description = sanity?.description || STATIC.description
+  const specimens = sanity?.fontSpecimens?.length ? sanity.fontSpecimens : FONT_SPECIMENS
+  const fontsHref = googleFontsHref(specimens)
 
   return (
     <div>
+      {fontsHref ? <link rel="stylesheet" href={fontsHref} /> : null}
       <PageHeader section="Brand" title="Typography" description={description} />
 
       <div className="token-section">
@@ -39,6 +90,29 @@ export default async function BrandTypographyPage() {
               </div>
               <div className="type-scale-sample" style={{ fontSize: row.px, fontWeight: row.px >= 17 ? 600 : 400 }}>
                 Design system
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="token-section">
+        <h2 className="token-section-title">Product fonts</h2>
+        <div className="type-specimen-list">
+          {specimens.map((spec: any, index: number) => (
+            <div key={index} className="type-specimen-card">
+              <div className="type-specimen-header">
+                <span className="type-specimen-name">{spec.fontFamily}</span>
+                {spec.usedBy ? <span className="chip">{spec.usedBy}</span> : null}
+              </div>
+              {spec.caption ? <p className="type-specimen-caption">{spec.caption}</p> : null}
+              <div
+                className="type-specimen-sample"
+                style={{ fontFamily: `"${spec.googleFont || spec.fontFamily}", var(--font-sans)` }}
+              >
+                <div>ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+                <div>abcdefghijklmnopqrstuvwxyz</div>
+                <div>0123456789</div>
               </div>
             </div>
           ))}

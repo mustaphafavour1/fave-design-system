@@ -739,6 +739,44 @@ const brandPages = [
     slug: slug('typography'),
     description:
       'A two-font system: a display face for headings, stat values, and the logo wordmark, and a body face for everything else. A monospace face is reserved for reference IDs, hex codes, and code.',
+    fontSpecimens: [
+      {
+        fontFamily: 'Fraunces',
+        googleFont: 'Fraunces',
+        caption: 'App display face — headlines, match scores, currency amounts.',
+        usedBy: 'MonieMatch',
+      },
+      {
+        fontFamily: 'Nunito',
+        googleFont: 'Nunito',
+        caption: 'App body copy, labels, and buttons.',
+        usedBy: 'MonieMatch',
+      },
+      {
+        fontFamily: 'Bricolage Grotesque',
+        googleFont: 'Bricolage Grotesque',
+        caption: 'Headings and the wordmark.',
+        usedBy: 'Stampdx',
+      },
+      {
+        fontFamily: 'Plus Jakarta Sans',
+        googleFont: 'Plus Jakarta Sans',
+        caption: 'UI text and paragraphs.',
+        usedBy: 'Stampdx',
+      },
+      {
+        fontFamily: 'Syne',
+        googleFont: 'Syne',
+        caption: 'Display, headings, and UI labels.',
+        usedBy: 'Kronikl',
+      },
+      {
+        fontFamily: 'Inter',
+        googleFont: 'Inter',
+        caption: 'Body copy.',
+        usedBy: 'Kronikl',
+      },
+    ],
   },
   {
     _id: 'brandPage-voice',

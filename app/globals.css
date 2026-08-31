@@ -32,6 +32,22 @@
   --color-bg-raised: #111118;
   --color-bg-subtle: #16161f;
 
+  /* Neutral scale — the numeric scale semantic tokens above are drawn
+     from (see Foundations → Design Tokens). Several stops are exactly
+     the existing text/border/bg tokens, not independently chosen. */
+  --gray-25: #f8f8fa;
+  --gray-50: #f0f0f5;
+  --gray-100: #e4e4ec;
+  --gray-200: #c8c8d6;
+  --gray-300: #acacbe;
+  --gray-400: #9494ac;
+  --gray-500: #80809a;
+  --gray-600: #5c5c72;
+  --gray-700: #3a3a4a;
+  --gray-800: #2a2a3a;
+  --gray-900: #1e1e2e;
+  --gray-950: #0a0a0f;
+
   /* Status — tinted-badge formula: bg at 10% opacity of the category
      colour, border at ~24%, text at full opacity. */
   --color-success-bg: rgba(74, 222, 128, 0.1);
@@ -2941,6 +2957,68 @@ a.product-index-card:hover {
   font-size: 15px;
   font-weight: 600;
   color: var(--color-text);
+}
+
+.product-palettes-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.product-palette-name {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+}
+
+.product-palette-name:hover {
+  color: var(--color-primary);
+}
+
+.type-specimen-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.type-specimen-card {
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-raised);
+}
+
+.type-specimen-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-1);
+}
+
+.type-specimen-name {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.type-specimen-caption {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-4);
+}
+
+.type-specimen-sample {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  font-size: 20px;
+  line-height: 1.4;
+  color: var(--color-text);
+  word-break: break-word;
 }
 
 .product-surface-description {
