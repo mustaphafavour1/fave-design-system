@@ -1,6 +1,8 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
+import { MagnifyingGlass } from '@phosphor-icons/react/dist/ssr'
 
 function toTitleCase(segment: string) {
   return segment
@@ -9,11 +11,25 @@ function toTitleCase(segment: string) {
     .join(' ')
 }
 
+function formatDateTime(date: Date) {
+  const datePart = date.toLocaleDateString('en-US', { weekday: 'short', day: 'numeric', month: 'short' })
+  const timePart = date.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })
+  return `${datePart} · ${timePart}`
+}
+
 export function TopBar() {
   const pathname = usePathname()
   const segments = pathname.split('/').filter(Boolean)
   const crumbs = segments.length > 0 ? segments.map(toTitleCase) : ['Overview']
-  const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? 'm7vu676k'
+
+  // Rendered null on the server and filled in after mount so the clock
+  // never causes a hydration mismatch against the server-rendered markup.
+  const [now, setNow] = useState<Date | null>(null)
+  useEffect(() => {
+    setNow(new Date())
+    const id = setInterval(() => setNow(new Date()), 30000)
+    return () => clearInterval(id)
+  }, [])
 
   return (
     <div className="topbar">
@@ -25,14 +41,13 @@ export function TopBar() {
           </span>
         ))}
       </div>
-      <a
-        className="manage-link"
-        href={`https://www.sanity.io/manage/project/${projectId}`}
-        target="_blank"
-        rel="noreferrer"
-      >
-        Manage Content
-      </a>
+
+      <label className="topbar-search">
+        <MagnifyingGlass size={15} />
+        <input type="search" placeholder="Search the design system" aria-label="Search the design system" />
+      </label>
+
+      <span className="topbar-datetime">{now ? formatDateTime(now) : ' '}</span>
     </div>
   )
 }
