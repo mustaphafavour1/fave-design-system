@@ -4,6 +4,8 @@ import { Parkinsans } from 'next/font/google'
 import './globals.css'
 import { Sidebar } from '@/components/layout/Sidebar'
 import { TopBar } from '@/components/layout/TopBar'
+import { getProducts } from '@/lib/sanity'
+import { getStaticSearchIndex } from '@/lib/search-index'
 
 const parkinsans = Parkinsans({
   subsets: ['latin'],
@@ -18,14 +20,26 @@ export const metadata: Metadata = {
     'Brand, foundations, components, patterns, and products — the single source of truth for HeadFavour.',
 }
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default async function RootLayout({ children }: { children: ReactNode }) {
+  const products = await getProducts()
+  const searchIndex = [
+    ...getStaticSearchIndex(),
+    ...(Array.isArray(products)
+      ? products.map((product: any) => ({
+          title: product.name,
+          section: 'Products',
+          href: `/products/${product.slug}`,
+        }))
+      : []),
+  ]
+
   return (
     <html lang="en" className={parkinsans.variable}>
       <body>
         <div className="app-shell">
           <Sidebar />
           <div className="content-area">
-            <TopBar />
+            <TopBar searchIndex={searchIndex} />
             <main className="page-content">{children}</main>
           </div>
         </div>
