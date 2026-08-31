@@ -1,4 +1,4 @@
-import { Wallet, ClockCounterClockwise, XCircle, DownloadSimple } from '@phosphor-icons/react/dist/ssr'
+import { Wallet, ClockCounterClockwise, XCircle, FileCsv, FileXls, FilePdf } from '@phosphor-icons/react/dist/ssr'
 import { PageHeader } from '@/components/docs/PageHeader'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { DosDonts } from '@/components/docs/DosDonts'
@@ -8,6 +8,8 @@ import { Tabs } from '@/components/ui/Tabs'
 import { TextInput } from '@/components/ui/TextInput'
 import { Select } from '@/components/ui/Select'
 import { Button } from '@/components/ui/Button'
+import { IconButton } from '@/components/ui/IconButton'
+import { Tooltip } from '@/components/ui/Tooltip'
 import { Table } from '@/components/ui/Table'
 import { Badge } from '@/components/ui/Badge'
 import { Pagination } from '@/components/ui/Pagination'
@@ -69,6 +71,10 @@ export default async function DataTablesPatternPage() {
             <StatCard label="Failed" value="1" icon={<XCircle size={16} />} />
           </div>
 
+          <div className="pattern-toolbar-search">
+            <TextInput placeholder="Search transactions" />
+          </div>
+
           <div className="pattern-toolbar">
             <Tabs
               tabs={[
@@ -78,16 +84,23 @@ export default async function DataTablesPatternPage() {
               ]}
             />
             <div className="pattern-toolbar-filters">
-              <TextInput placeholder="Search transactions" />
               <Select aria-label="Filter by status">
                 <option>All statuses</option>
                 <option>Completed</option>
                 <option>Pending</option>
                 <option>Failed</option>
               </Select>
-              <Button variant="secondary" size="sm" icon={<DownloadSimple size={14} weight="bold" />}>
-                Export
-              </Button>
+              <div className="pattern-export-group" role="group" aria-label="Export as">
+                <Tooltip label="Export as CSV">
+                  <IconButton icon={<FileCsv size={16} />} label="Export as CSV" variant="ghost" size="sm" />
+                </Tooltip>
+                <Tooltip label="Export as XLS">
+                  <IconButton icon={<FileXls size={16} />} label="Export as XLS" variant="ghost" size="sm" />
+                </Tooltip>
+                <Tooltip label="Export as PDF">
+                  <IconButton icon={<FilePdf size={16} />} label="Export as PDF" variant="ghost" size="sm" />
+                </Tooltip>
+              </div>
             </div>
           </div>
 

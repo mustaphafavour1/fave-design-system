@@ -32,12 +32,21 @@ export default async function DashboardPatternPage() {
     <div>
       <PageHeader section="Patterns" title="Dashboard Layout" description={description} />
 
-      <ComponentPreview title="Anatomy">
+      <ComponentPreview
+        title="Anatomy"
+        description="The logo sits top-left, on the same line as the top bar — not buried inside the sidebar below it."
+      >
         <div className="pattern-dashboard-demo">
-          <SidebarNav
-            defaultActive="Overview"
-            items={[{ label: 'Overview' }, { label: 'Transactions', badge: '3' }, { label: 'Customers' }, { label: 'Settings' }]}
-          />
+          <div className="pattern-dashboard-sidebar">
+            <div className="pattern-dashboard-logo">
+              <span className="pattern-dashboard-logo-mark">F</span>
+              Brand
+            </div>
+            <SidebarNav
+              defaultActive="Overview"
+              items={[{ label: 'Overview' }, { label: 'Transactions', badge: '3' }, { label: 'Customers' }, { label: 'Settings' }]}
+            />
+          </div>
           <div className="pattern-dashboard-main">
             <div className="pattern-dashboard-topbar">Good Morning, Ada</div>
             <div className="pattern-dashboard-content">

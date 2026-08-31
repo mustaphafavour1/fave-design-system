@@ -11,7 +11,7 @@ export const revalidate = 60
 
 const STATIC = {
   description:
-    'Two accepted layouts: split screen (contextual image + form card) and fullscreen overlay (background image, dark overlay, frosted card). Both share the same field and button rules.',
+    'Two accepted layouts: split screen (contextual image + form card) and a simple modal, centred on a plain background. Both share the same field and button rules.',
   dos: [
     'Keep the submit button visually muted/disabled until every required field validates.',
     'Put "Remember me" and "Forgot Password?" on the same row.',
@@ -52,6 +52,29 @@ export default async function AuthPatternPage() {
                 Sign in
               </Button>
             </div>
+          </div>
+        </div>
+      </ComponentPreview>
+
+      <ComponentPreview
+        title="Format 2 — centred modal, plain background"
+        description="For a lighter-weight sign-in — no contextual image, just the form on its own card."
+      >
+        <div className="pattern-auth-modal-demo">
+          <div className="pattern-auth-card pattern-auth-modal-card">
+            <div className="pattern-auth-logo">F</div>
+            <div className="pattern-auth-title">Sign in</div>
+            <TextInput label="Email" placeholder="you@example.com" />
+            <TextInput label="Password" type="password" placeholder="••••••••" />
+            <div className="pattern-auth-row">
+              <Checkbox label="Remember me" />
+              <Link href="#" variant="inline" muted>
+                Forgot Password?
+              </Link>
+            </div>
+            <Button disabled style={{ width: '100%' }}>
+              Sign in
+            </Button>
           </div>
         </div>
       </ComponentPreview>

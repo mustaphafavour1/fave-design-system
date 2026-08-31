@@ -186,7 +186,7 @@ const patterns = [
     slug: slug('auth'),
     order: 1,
     description:
-      'Two accepted layouts: split screen (contextual image + form card) and fullscreen overlay (background image, dark overlay, frosted card). Both share the same field and button rules.',
+      'Two accepted layouts: split screen (contextual image + form card) and a simple modal, centred on a plain background. Both share the same field and button rules.',
     dos: [
       'Keep the submit button visually muted/disabled until every required field validates.',
       'Put "Remember me" and "Forgot Password?" on the same row.',
