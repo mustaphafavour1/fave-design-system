@@ -24,6 +24,8 @@ const STATIC = {
 export default async function BrandLogoPage() {
   const sanity = await getBrandPage('logo')
   const description = sanity?.description || STATIC.description
+  const dos = sanity?.dos?.length ? sanity.dos : STATIC.dos
+  const donts = sanity?.donts?.length ? sanity.donts : STATIC.donts
   const images: any[] = sanity?.images ?? []
 
   return (
@@ -58,7 +60,7 @@ export default async function BrandLogoPage() {
       )}
 
       <div className="stack-block">
-        <DosDonts dos={STATIC.dos} donts={STATIC.donts} />
+        <DosDonts dos={dos} donts={donts} />
       </div>
 
       {images.length === 0 ? (

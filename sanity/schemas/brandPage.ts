@@ -31,6 +31,18 @@ export default defineType({
       of: [{ type: 'block' }],
     }),
     defineField({
+      name: 'dos',
+      title: "Do's",
+      type: 'array',
+      of: [{ type: 'string' }],
+    }),
+    defineField({
+      name: 'donts',
+      title: "Don'ts",
+      type: 'array',
+      of: [{ type: 'string' }],
+    }),
+    defineField({
       name: 'colors',
       title: 'Colours',
       type: 'array',

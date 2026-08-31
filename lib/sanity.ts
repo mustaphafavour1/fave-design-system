@@ -30,7 +30,7 @@ async function sanityFetch(query: string, params: Record<string, unknown> = {}):
 export async function getBrandPage(slug: string): Promise<any> {
   return sanityFetch(
     `*[_type == "brandPage" && slug.current == $slug && ${NO_DRAFTS}][0]{
-      title, "slug": slug.current, description, body, colors, images
+      title, "slug": slug.current, description, body, dos, donts, colors, images
     }`,
     { slug }
   )

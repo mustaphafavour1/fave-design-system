@@ -25,6 +25,8 @@ export default async function BrandVoicePage() {
   const sanity = await getBrandPage('voice')
   const description = sanity?.description || STATIC.description
   const body = sanity?.body
+  const dos = sanity?.dos?.length ? sanity.dos : STATIC.dos
+  const donts = sanity?.donts?.length ? sanity.donts : STATIC.donts
 
   return (
     <div>
@@ -49,7 +51,7 @@ export default async function BrandVoicePage() {
       )}
 
       <div className="stack-block">
-        <DosDonts dos={STATIC.dos} donts={STATIC.donts} />
+        <DosDonts dos={dos} donts={donts} />
       </div>
 
       {!sanity ? (
