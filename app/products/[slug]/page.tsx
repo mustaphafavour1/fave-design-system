@@ -175,6 +175,29 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           <ProductScreenshots images={product.screenshots} />
         </div>
       ) : null}
+
+      {product.surfaces?.length ? (
+        <div className="token-section">
+          <h2 className="token-section-title">Surfaces</h2>
+          <div className="product-surfaces">
+            {product.surfaces.map((surface: any, index: number) => (
+              <div key={index} className="product-surface">
+                <div className="product-surface-header">
+                  <h3 className="product-surface-title">{surface.label || surface.type}</h3>
+                  {surface.label ? <span className="chip">{surface.type}</span> : null}
+                  {surface.liveUrl ? (
+                    <Link href={surface.liveUrl} external>
+                      Visit
+                    </Link>
+                  ) : null}
+                </div>
+                {surface.description ? <p className="product-surface-description">{surface.description}</p> : null}
+                {surface.screenshots?.length ? <ProductScreenshots images={surface.screenshots} /> : null}
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : null}
     </div>
   )
 }

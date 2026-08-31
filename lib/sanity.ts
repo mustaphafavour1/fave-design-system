@@ -76,7 +76,7 @@ export async function getProduct(slug: string): Promise<any> {
     `*[_type == "product" && slug.current == $slug && ${NO_DRAFTS}][0]{
       name, "slug": slug.current, tagline, category, type, status, liveUrl, figmaUrl, logo,
       description, positioning, techStack, typography, highlights,
-      features, colors, screenshots, showOnSite
+      features, colors, screenshots, surfaces, showOnSite
     }`,
     { slug }
   )

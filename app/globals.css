@@ -2818,6 +2818,42 @@ a.product-index-card:hover {
   background: rgba(255, 255, 255, 0.2);
 }
 
+.product-surfaces {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.product-surface {
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-raised);
+}
+
+.product-surface-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.product-surface-title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.product-surface-description {
+  font-size: 13.5px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-4);
+  max-width: 640px;
+}
+
 /* ---------------------------------------------------------------------- */
 /* Contributing                                                           */
 /* ---------------------------------------------------------------------- */

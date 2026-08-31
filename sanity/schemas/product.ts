@@ -181,6 +181,54 @@ export default defineType({
       ],
     }),
     defineField({
+      name: 'surfaces',
+      title: 'Surfaces',
+      description:
+        'For a product with more than one distinct experience — e.g. the marketing website, the product itself, and an admin dashboard — break screenshots out per surface here. Skip this for a single-surface product; Key Screens above still covers that case.',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          name: 'surface',
+          fields: [
+            {
+              name: 'type',
+              title: 'Type',
+              type: 'string',
+              options: { list: ['Website', 'Product', 'Admin Dashboard'] },
+              validation: (Rule) => Rule.required(),
+            },
+            {
+              name: 'label',
+              title: 'Label',
+              description: 'Optional display name override, e.g. "Organizer Dashboard" instead of "Admin Dashboard".',
+              type: 'string',
+            },
+            { name: 'description', title: 'Description', type: 'text' },
+            { name: 'liveUrl', title: 'Live URL', type: 'url' },
+            {
+              name: 'screenshots',
+              title: 'Screenshots',
+              type: 'array',
+              of: [
+                {
+                  type: 'image',
+                  options: { hotspot: true },
+                  fields: [{ name: 'caption', title: 'Caption', type: 'string' }],
+                },
+              ],
+            },
+          ],
+          preview: {
+            select: { label: 'label', type: 'type', media: 'screenshots.0' },
+            prepare({ label, type, media }) {
+              return { title: label || type, subtitle: label ? type : undefined, media }
+            },
+          },
+        },
+      ],
+    }),
+    defineField({
       name: 'showOnSite',
       title: 'Show on site',
       description:
