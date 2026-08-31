@@ -121,7 +121,7 @@ export const navigation: NavSectionDef[] = [
     ],
   },
   {
-    label: 'AI Design Guardrails',
+    label: 'AI Taste/Guideline Docs',
     icon: 'ShieldCheck',
     items: [
       { label: 'Websites', href: '/guardrails/websites' },

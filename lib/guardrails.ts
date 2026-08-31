@@ -86,3 +86,29 @@ export async function getGuardrailCount(platform: GuardrailPlatform): Promise<nu
   const uploaded = await getUploadedGuardrails(platform)
   return fileRuleCount + uploaded.length
 }
+
+// Combines the git-tracked rules and any uploaded specs for a platform
+// into one markdown document — what the copy/download controls on each
+// platform page hand to a visitor, e.g. to paste straight into an AI
+// agent's context.
+export async function buildGuardrailMarkdown(platform: GuardrailPlatform, label: string): Promise<string> {
+  const grouped = getGuardrailsByPlatform(platform)
+  const uploaded = await getUploadedGuardrails(platform)
+  const lines: string[] = [`# ${label} — AI Taste/Guideline Docs`, '']
+
+  for (const category of Object.keys(grouped)) {
+    lines.push(`## ${category}`, '')
+    for (const rule of grouped[category]) {
+      lines.push(`### ${rule.title} (${rule.severity})`, '')
+      if (rule.body?.trim()) lines.push(rule.body.trim(), '')
+    }
+  }
+
+  for (const doc of uploaded) {
+    lines.push(`## ${doc.title}`, '')
+    if (doc.severity) lines.push(`_${doc.category || 'Uploaded spec'} · ${doc.severity}_`, '')
+    if (doc.body) lines.push(doc.body, '')
+  }
+
+  return lines.join('\n').trim() + '\n'
+}

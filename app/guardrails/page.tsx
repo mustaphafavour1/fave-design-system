@@ -17,8 +17,8 @@ export default async function GuardrailsOverviewPage() {
   return (
     <div>
       <PageHeader
-        section="AI Design Guardrails"
-        title="AI Design Guardrails"
+        section="AI Taste/Guideline Docs"
+        title="AI Taste/Guideline Docs"
         description="The checklists I grade AI-produced design against before it ships. Patterns and Components are what to build with; this is what the result gets checked against."
       />
 
