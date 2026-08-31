@@ -36,15 +36,18 @@ export function ProductScreenshots({ images }: { images: ScreenshotImage[] }) {
     <>
       <div className="product-screenshots-grid">
         {images.map((image, index) => (
-          <button key={index} type="button" className="product-screenshot-thumb" onClick={() => setActiveIndex(index)}>
-            <Image
-              src={urlFor(image).width(400).url()}
-              alt={image.caption ?? ''}
-              fill
-              sizes="220px"
-              style={{ objectFit: 'cover' }}
-            />
-          </button>
+          <div key={index}>
+            <button type="button" className="product-screenshot-thumb" onClick={() => setActiveIndex(index)}>
+              <Image
+                src={urlFor(image).width(400).url()}
+                alt={image.caption ?? ''}
+                fill
+                sizes="220px"
+                style={{ objectFit: 'cover' }}
+              />
+            </button>
+            {image.caption ? <p className="product-screenshot-caption">{image.caption}</p> : null}
+          </div>
         ))}
       </div>
 
