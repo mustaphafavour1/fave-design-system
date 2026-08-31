@@ -941,7 +941,10 @@ a.overview-card:hover {
 }
 
 .color-swatch-info {
-  display: block;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
   padding: var(--space-3);
 }
 
@@ -952,7 +955,8 @@ a.overview-card:hover {
 }
 
 .color-swatch-hex {
-  margin-top: var(--space-2);
+  flex-shrink: 0;
+  margin-left: auto;
   font-family: var(--font-mono);
   font-size: 12px;
   color: var(--color-text-muted);
@@ -2680,6 +2684,10 @@ a.overview-card:hover {
   box-shadow: var(--shadow-4);
 }
 
+.pattern-auth-modal-card .ui-field {
+  max-width: none;
+}
+
 .pattern-dashboard-demo {
   display: flex;
   border: 1px solid var(--color-border);
@@ -3068,8 +3076,11 @@ a.product-index-card:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 64px;
-  height: 64px;
+  width: 80px;
+  height: 80px;
+  padding: var(--space-3);
+  border-radius: var(--radius-lg);
+  background: #ffffff;
 }
 
 .product-logo-swatch svg {
@@ -3112,11 +3123,11 @@ a.product-index-card:hover {
 }
 
 .colours-section-gap-md {
-  margin-top: var(--space-6);
+  margin-top: calc(var(--space-6) * 3);
 }
 
 .colours-section-gap-lg {
-  margin-top: var(--space-10);
+  margin-top: calc(var(--space-10) * 3);
 }
 
 .token-section-caption {
