@@ -26,22 +26,23 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         title={product.name}
         description={product.tagline}
         status={product.status}
+        actions={
+          product.liveUrl || product.figmaUrl ? (
+            <>
+              {product.liveUrl ? (
+                <Link href={product.liveUrl} external>
+                  Live site
+                </Link>
+              ) : null}
+              {product.figmaUrl ? (
+                <Link href={product.figmaUrl} external>
+                  Figma
+                </Link>
+              ) : null}
+            </>
+          ) : undefined
+        }
       />
-
-      {product.liveUrl || product.figmaUrl ? (
-        <div className="page-header-links">
-          {product.liveUrl ? (
-            <Link href={product.liveUrl} external>
-              Live site
-            </Link>
-          ) : null}
-          {product.figmaUrl ? (
-            <Link href={product.figmaUrl} external>
-              Figma
-            </Link>
-          ) : null}
-        </div>
-      ) : null}
 
       <div className="product-identity">
         {product.logo ? (

@@ -720,9 +720,9 @@ const brandPages = [
     description:
       'The colour system is a semantic layer over numeric scales. Product teams reach for the semantic alias below, never a raw scale value.',
     colors: [
-      { name: 'Background', hex: '#0A0A0F' },
       { name: 'Primary', hex: '#F7C948' },
       { name: 'Primary Dark', hex: '#E6B830' },
+      { name: 'Background', hex: '#0A0A0F' },
       { name: 'Text', hex: '#F0F0F5' },
       { name: 'Text Secondary', hex: '#9494AC' },
       { name: 'Border', hex: '#1E1E2E' },

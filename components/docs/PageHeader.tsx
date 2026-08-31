@@ -1,15 +1,19 @@
+import type { ReactNode } from 'react'
+
 export function PageHeader({
   section,
   title,
   description,
   status,
   figmaUrl,
+  actions,
 }: {
   section: string
   title: string
   description?: string
   status?: string
   figmaUrl?: string
+  actions?: ReactNode
 }) {
   const statusClass = status
     ? `status-badge status-badge-${status.toLowerCase().replace(/\s+/g, '-')}`
@@ -19,8 +23,11 @@ export function PageHeader({
     <header className="page-header">
       <div className="page-header-eyebrow">{section}</div>
       <div className="page-header-title-row">
-        <h1 className="page-header-title">{title}</h1>
-        {status ? <span className={statusClass ?? undefined}>{status}</span> : null}
+        <div className="page-header-title-group">
+          <h1 className="page-header-title">{title}</h1>
+          {status ? <span className={statusClass ?? undefined}>{status}</span> : null}
+        </div>
+        {actions ? <div className="page-header-actions">{actions}</div> : null}
       </div>
       {description ? <p className="page-header-description">{description}</p> : null}
       {figmaUrl ? (

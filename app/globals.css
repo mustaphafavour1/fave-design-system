@@ -529,8 +529,24 @@ pre {
 .page-header-title-row {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.page-header-title-group {
+  display: flex;
+  align-items: center;
   gap: var(--space-3);
   flex-wrap: wrap;
+  min-width: 0;
+}
+
+.page-header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
 }
 
 .page-header-title {
@@ -876,11 +892,35 @@ a.overview-card:hover {
 }
 
 .color-swatch-hex {
-  margin-top: 2px;
+  margin-top: var(--space-2);
   font-family: var(--font-mono);
   font-size: 12px;
   color: var(--color-text-muted);
   text-transform: uppercase;
+}
+
+.color-swatch-copy-hint {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-full);
+  background: rgba(15, 23, 42, 0.85);
+  color: #fff;
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--easing);
+}
+
+.color-swatch:hover .color-swatch-copy-hint {
+  opacity: 1;
+}
+
+.color-swatch-copy-hint.is-hidden {
+  opacity: 0;
 }
 
 .color-swatch-copied {
@@ -1072,13 +1112,7 @@ a.overview-card:hover {
   justify-content: center;
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
-  background-color: var(--color-bg-raised);
-  background-image: linear-gradient(45deg, var(--color-bg-subtle) 25%, transparent 25%),
-    linear-gradient(-45deg, var(--color-bg-subtle) 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, var(--color-bg-subtle) 75%),
-    linear-gradient(-45deg, transparent 75%, var(--color-bg-subtle) 75%);
-  background-size: 20px 20px;
-  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  background: var(--color-bg-raised);
 }
 
 .logo-showcase {
@@ -2569,13 +2603,16 @@ a.overview-card:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 420px;
+  min-height: 460px;
   width: 100%;
+  padding: var(--space-10) var(--space-6);
   background: var(--color-bg);
   border-radius: var(--radius-lg);
 }
 
 .pattern-auth-modal-card {
+  width: 100%;
+  max-width: 420px;
   background: var(--color-bg-raised);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
@@ -2959,10 +2996,25 @@ a.product-index-card:hover {
   color: var(--color-text);
 }
 
+.colours-section-gap-md {
+  margin-top: var(--space-6);
+}
+
+.colours-section-gap-lg {
+  margin-top: var(--space-10);
+}
+
+.token-section-caption {
+  margin-top: calc(-1 * var(--space-2));
+  margin-bottom: var(--space-5);
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
 .product-palettes-list {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: var(--space-10);
 }
 
 .product-palette-name {

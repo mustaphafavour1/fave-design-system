@@ -9,9 +9,9 @@ const STATIC = {
   description:
     'The colour system is a semantic layer over numeric scales. Product teams reach for the semantic alias below, never a raw scale value.',
   colors: [
-    { name: 'Background', hex: '#0A0A0F' },
     { name: 'Primary', hex: '#F7C948' },
     { name: 'Primary Dark', hex: '#E6B830' },
+    { name: 'Background', hex: '#0A0A0F' },
     { name: 'Text', hex: '#F0F0F5' },
     { name: 'Text Secondary', hex: '#9494AC' },
     { name: 'Border', hex: '#1E1E2E' },
@@ -49,14 +49,17 @@ export default async function BrandColoursPage() {
       <PageHeader section="Brand" title="Colours" description={description} />
       <ColorPalette colors={colors} />
 
-      <div className="token-section">
+      <div className="token-section colours-section-gap-md">
         <h2 className="token-section-title">Neutral scale</h2>
         <ColorPalette colors={GRAY_SCALE} />
       </div>
 
       {palettes.length > 0 ? (
-        <div className="token-section">
+        <div className="token-section colours-section-gap-lg">
           <h2 className="token-section-title">Product colours</h2>
+          <p className="token-section-caption">
+            The colours used across HeadFavour&apos;s own products, shown one palette per product.
+          </p>
           <div className="product-palettes-list">
             {palettes.map((product: any) => (
               <div key={product.slug}>

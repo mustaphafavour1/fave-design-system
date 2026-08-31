@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Check } from '@phosphor-icons/react/dist/ssr'
+import { Check, Copy } from '@phosphor-icons/react/dist/ssr'
 
 export interface ColorSwatchData {
   name: string
@@ -35,6 +35,9 @@ export function ColorPalette({ colors }: { colors: ColorSwatchData[] }) {
           <span className="color-swatch-info">
             <span className="color-swatch-name">{color.name}</span>
             <span className="color-swatch-hex">{color.hex}</span>
+          </span>
+          <span className={`color-swatch-copy-hint${copied === color.hex ? ' is-hidden' : ''}`}>
+            <Copy size={13} />
           </span>
           <span className={`color-swatch-copied${copied === color.hex ? ' is-visible' : ''}`}>
             <Check size={12} weight="bold" />
