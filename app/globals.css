@@ -3028,6 +3028,61 @@ a.product-index-card:hover {
   background: rgba(255, 255, 255, 0.2);
 }
 
+.product-lockups {
+  display: flex;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.product-lockup-card {
+  width: 220px;
+}
+
+.product-lockup-preview {
+  height: 140px;
+  padding: var(--space-4);
+}
+
+.product-lockup-label {
+  margin-top: var(--space-2);
+  font-size: 12.5px;
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+.product-logo-colourways {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+}
+
+.product-logo-colourway {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  width: 96px;
+}
+
+.product-logo-swatch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+}
+
+.product-logo-swatch svg {
+  width: 100%;
+  height: 100%;
+}
+
+.product-logo-colourway-label {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
 .product-surfaces {
   display: flex;
   flex-direction: column;

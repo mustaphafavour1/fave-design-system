@@ -74,7 +74,8 @@ export async function getChangelog(): Promise<any> {
 export async function getProduct(slug: string): Promise<any> {
   return sanityFetch(
     `*[_type == "product" && slug.current == $slug && ${NO_DRAFTS}][0]{
-      name, "slug": slug.current, tagline, category, type, status, liveUrl, figmaUrl, logo,
+      name, "slug": slug.current, tagline, category, type, status, liveUrl, figmaUrl,
+      logo, logoHorizontal, logoVertical,
       description, positioning, techStack, typography, highlights,
       features, colors, screenshots, surfaces, showOnSite
     }`,

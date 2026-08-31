@@ -6,6 +6,7 @@ import { ProductScreenshots } from '@/components/docs/ProductScreenshots'
 import { Link } from '@/components/ui/Link'
 import { ResolvedIcon } from '@/lib/icons'
 import { getProduct, urlFor } from '@/lib/sanity'
+import { fetchRecolorableSvg } from '@/lib/svg'
 
 export const revalidate = 60
 
@@ -18,6 +19,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   if (!product || product.showOnSite === false) {
     notFound()
   }
+
+  const recolorableLogo = product.logo ? await fetchRecolorableSvg(urlFor(product.logo).url()) : null
 
   return (
     <div>
@@ -82,6 +85,42 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         ) : null}
       </div>
 
+      {product.logoHorizontal || product.logoVertical ? (
+        <div className="token-section">
+          <h2 className="token-section-title">Logo lockups</h2>
+          <div className="product-lockups">
+            {product.logoHorizontal ? (
+              <div className="product-lockup-card">
+                <div className="demo-surface product-lockup-preview">
+                  <Image
+                    src={urlFor(product.logoHorizontal).width(400).url()}
+                    alt={`${product.name} horizontal lockup`}
+                    width={220}
+                    height={80}
+                    style={{ objectFit: 'contain', width: 'auto', height: 'auto', maxWidth: '100%', maxHeight: '100%' }}
+                  />
+                </div>
+                <p className="product-lockup-label">Horizontal</p>
+              </div>
+            ) : null}
+            {product.logoVertical ? (
+              <div className="product-lockup-card">
+                <div className="demo-surface product-lockup-preview">
+                  <Image
+                    src={urlFor(product.logoVertical).width(300).url()}
+                    alt={`${product.name} vertical lockup`}
+                    width={140}
+                    height={140}
+                    style={{ objectFit: 'contain', width: 'auto', height: 'auto', maxWidth: '100%', maxHeight: '100%' }}
+                  />
+                </div>
+                <p className="product-lockup-label">Vertical</p>
+              </div>
+            ) : null}
+          </div>
+        </div>
+      ) : null}
+
       {product.positioning ? <p className="product-positioning">{product.positioning}</p> : null}
 
       {product.description ? <p className="product-description">{product.description}</p> : null}
@@ -121,6 +160,24 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         <div className="token-section">
           <h2 className="token-section-title">Colours</h2>
           <ColorPalette colors={product.colors} />
+        </div>
+      ) : null}
+
+      {recolorableLogo && product.colors?.length ? (
+        <div className="token-section">
+          <h2 className="token-section-title">Logo in brand colours</h2>
+          <div className="product-logo-colourways">
+            {product.colors.map((color: any, index: number) => (
+              <div key={index} className="product-logo-colourway">
+                <span
+                  className="product-logo-swatch"
+                  style={{ color: color.hex }}
+                  dangerouslySetInnerHTML={{ __html: recolorableLogo }}
+                />
+                <span className="product-logo-colourway-label">{color.name}</span>
+              </div>
+            ))}
+          </div>
         </div>
       ) : null}
 

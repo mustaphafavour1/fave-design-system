@@ -78,7 +78,22 @@ export default defineType({
     defineField({ name: 'figmaUrl', title: 'Figma URL', type: 'url' }),
     defineField({
       name: 'logo',
-      title: 'Logo',
+      title: 'Logo (Mark)',
+      description: 'The icon/mark on its own — used in the identity box and recoloured in the brand-colours showcase below. Upload as SVG with a transparent background so recolouring works.',
+      type: 'image',
+      options: { hotspot: true },
+    }),
+    defineField({
+      name: 'logoHorizontal',
+      title: 'Logo (Horizontal Lockup)',
+      description: 'Icon and wordmark side by side.',
+      type: 'image',
+      options: { hotspot: true },
+    }),
+    defineField({
+      name: 'logoVertical',
+      title: 'Logo (Vertical Lockup)',
+      description: 'Icon above the wordmark, stacked.',
       type: 'image',
       options: { hotspot: true },
     }),
