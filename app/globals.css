@@ -1098,7 +1098,7 @@ a.overview-card:hover {
 .token-shadow-preview {
   height: 64px;
   border-radius: var(--radius-lg);
-  background: var(--color-bg-raised);
+  background: var(--gray-400);
 }
 
 .token-type-sample {
